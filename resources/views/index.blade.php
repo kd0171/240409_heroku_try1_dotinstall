@@ -16,20 +16,28 @@
             <li>{{ $posts[2] }}</li> --}}
 
             {{-- bladeによるforeach構文 --}}
-            @foreach ($posts as $post)
+            {{-- @foreach ($posts as $post)
                 <li>{{ $post }}</li>
-            @endforeach
+            @endforeach --}}
 
             {{-- bladeによるforelse構文：データが空の場合の処理を@emptyの後に書ける --}}
-            @forelse ($posts as $post)
-                <li>{{ $post }}</li>
+            {{-- @forelse ($posts as $post)
+                <li>{{ $post }}</li> --}}
+
+            {{-- $index => $postのindexには配列のインデックスが入る --}}
+            @forelse ($posts as $index => $post)　
+                <li>
+                    <a href="/posts/{{ $index }}">
+                        {{ $post }}
+                    </a>
+                </li>
             @empty
                 <li>No posts yet!</li>
             @endforelse
 
+            {{-- <li>Title</li>
             <li>Title</li>
-            <li>Title</li>
-            <li>Title</li>
+            <li>Title</li> --}}
         </ul>
     </div>
 </body>
