@@ -32,3 +32,9 @@ use App\Http\Controllers\PostController;
 
 // 事前にUseに書いておく必要がある
 Route::get('/', [PostController::class, 'index']);
+
+// Route::get('/posts/0', [PostController::class, 'index']);
+// Route::get('/posts/1', [PostController::class, 'index']);
+// Route::get('/posts/2', [PostController::class, 'index']);
+// PostControllerのshowメソッドを用いて変数としてidを渡す
+Route::get('/posts/{id}', [PostController::class, 'show']);
