@@ -1,3 +1,11 @@
+<?php
+
+// var_dump($posts);
+// exit;
+dd($posts);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
