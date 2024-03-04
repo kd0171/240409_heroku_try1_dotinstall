@@ -28,7 +28,8 @@
             {{-- $index => $postのindexには配列のインデックスが入る --}}
             @forelse ($posts as $index => $post)　
                 <li>
-                    <a href="/posts/{{ $index }}">
+                    {{-- <a href="/posts/{{ $index }}"> --}}
+                    <a href="{{ route('posts.show', $index) }}">
                         {{ $post }}
                     </a>
                 </li>
