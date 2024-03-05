@@ -29,14 +29,16 @@ class PostController extends Controller
         //    左側が渡される側のphpでの変数名、右側は引数（この中で定義された変数）
     }
 
-    public function show($id)
+    // public function show($id) // postをルーティングにすると不要
+
+    public function show(Post $post)
     {
         // $post = Post::find($id);
         // if (!$post) {
         //     abort(404);
         // }
         //存在しないidへのアクセスの場合に正しくエラーを吐き出す
-        $post = Post::findOrFail($id);
+        // $post = Post::findOrFail($id); // postをルーティングにすると不要
 
         return view('posts.show')
             ->with(['post' => $post]);

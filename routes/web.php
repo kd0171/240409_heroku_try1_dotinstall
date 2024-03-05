@@ -40,5 +40,9 @@ Route::get('/', [PostController::class, 'index'])
 // Route::get('/posts/1', [PostController::class, 'index']);
 // Route::get('/posts/2', [PostController::class, 'index']);
 // PostControllerのshowメソッドを用いて変数としてidを渡す
-Route::get('/posts/{id}', [PostController::class, 'show'])
+
+// Route::get('/posts/{id}', [PostController::class, 'show'])
+//     ->name('posts.show');
+// id を受け取って、それをもとにデータを抽出して何らかの
+Route::get('/posts/{post}', [PostController::class, 'show'])
     ->name('posts.show');
