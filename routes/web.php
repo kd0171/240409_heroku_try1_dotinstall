@@ -45,4 +45,9 @@ Route::get('/', [PostController::class, 'index'])
 //     ->name('posts.show');
 // id を受け取って、それをもとにデータを抽出して何らかの
 Route::get('/posts/{post}', [PostController::class, 'show'])
-    ->name('posts.show');
+    ->name('posts.show')
+    ->where('post', '[0-9]+');
+
+
+Route::get('/posts/create', [PostController::class, 'create'])
+    ->name('posts.create');
