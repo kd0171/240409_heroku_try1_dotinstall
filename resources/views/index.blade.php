@@ -1,5 +1,10 @@
 {{-- slotに入れたい内容はx-layout内に書いていく --}}
 <x-layout>
+    <x-slot name="title">
+        My BBS
+    </x-slot>
+
+
     <h1>My BBS</h1>
     <ul>
         {{-- <li><?php echo htmlspecialchars($posts[0], ENT_QUOTES, 'UTF-8'); ?></li> --}}
