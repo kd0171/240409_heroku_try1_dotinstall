@@ -23,11 +23,11 @@
             <li>{{ $post }}</li> --}}
 
         {{-- $index => $postのindexには配列のインデックスが入る --}}
-        @forelse ($posts as $index => $post)　
+        @forelse ($posts as $post)
             <li>
                 {{-- <a href="/posts/{{ $index }}"> --}}
-                <a href="{{ route('posts.show', $index) }}">
-                    {{ $post }}
+                <a href="{{ route('posts.show', $post->id) }}">
+                    {{ $post->title }}
                 </a>
             </li>
         @empty
