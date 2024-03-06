@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -51,19 +52,20 @@ class PostController extends Controller
     }
 
     // フォームから送信されたデータは、ここで Request 型の $request でまとめて受け取ることができます。
-    public function store(Request $request)
+    // public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //リクエストの中身を検証
-        $request->validate([
-            // 入力必須、最低三文字
-            'title' => 'required|min:3',
-            'body' => 'required',
-        ], [
-            // 任意のエラーメッセージを表示
-            'title.required' => 'タイトルは必須です',
-            'title.min' => ':min 文字以上入力してください',
-            'body.required' => '本文は必須です',
-        ]);
+        // //リクエストの中身を検証
+        // $request->validate([
+        //     // 入力必須、最低三文字
+        //     'title' => 'required|min:3',
+        //     'body' => 'required',
+        // ], [
+        //     // 任意のエラーメッセージを表示
+        //     'title.required' => 'タイトルは必須です',
+        //     'title.min' => ':min 文字以上入力してください',
+        //     'body.required' => '本文は必須です',
+        // ]);
 
 
         $post = new Post();
@@ -81,19 +83,19 @@ class PostController extends Controller
             ->with(['post' => $post]);
     }
 
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        //リクエストの中身を検証
-        $request->validate([
-            // 入力必須、最低三文字
-            'title' => 'required|min:3',
-            'body' => 'required',
-        ], [
-            // 任意のエラーメッセージを表示
-            'title.required' => 'タイトルは必須です',
-            'title.min' => ':min 文字以上入力してください',
-            'body.required' => '本文は必須です',
-        ]);
+        // //リクエストの中身を検証
+        // $request->validate([
+        //     // 入力必須、最低三文字
+        //     'title' => 'required|min:3',
+        //     'body' => 'required',
+        // ], [
+        //     // 任意のエラーメッセージを表示
+        //     'title.required' => 'タイトルは必須です',
+        //     'title.min' => ':min 文字以上入力してください',
+        //     'body.required' => '本文は必須です',
+        // ]);
 
 
         // $post = new Post(); // 引数を利用
