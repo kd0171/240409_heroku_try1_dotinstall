@@ -49,4 +49,63 @@ class PostController extends Controller
     {
         return view('posts.create');
     }
+
+    // フォームから送信されたデータは、ここで Request 型の $request でまとめて受け取ることができます。
+    public function store(Request $request)
+    {
+        //リクエストの中身を検証
+        $request->validate([
+            // 入力必須、最低三文字
+            'title' => 'required|min:3',
+            'body' => 'required',
+        ], [
+            // 任意のエラーメッセージを表示
+            'title.required' => 'タイトルは必須です',
+            'title.min' => ':min 文字以上入力してください',
+            'body.required' => '本文は必須です',
+        ]);
+
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+
+        return redirect()
+            ->route('posts.index');
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit')
+            ->with(['post' => $post]);
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        //リクエストの中身を検証
+        $request->validate([
+            // 入力必須、最低三文字
+            'title' => 'required|min:3',
+            'body' => 'required',
+        ], [
+            // 任意のエラーメッセージを表示
+            'title.required' => 'タイトルは必須です',
+            'title.min' => ':min 文字以上入力してください',
+            'body.required' => '本文は必須です',
+        ]);
+
+
+        // $post = new Post(); // 引数を利用
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+
+        return redirect()
+            ->route('posts.show', $post);
+    }
+
+
+
 }
+

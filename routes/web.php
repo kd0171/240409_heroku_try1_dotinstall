@@ -51,3 +51,16 @@ Route::get('/posts/{post}', [PostController::class, 'show'])
 
 Route::get('/posts/create', [PostController::class, 'create'])
     ->name('posts.create');
+
+Route::post('/posts/store', [PostController::class, 'store'])
+    ->name('posts.store');
+
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])
+    ->name('posts.edit')
+    ->where('post', '[0-9]+');
+
+// 実はデータを新規に作成するときは post 形式なのですが、データの一部を更新するときは patch 形式にしてねと言うルールがウェブの通信において定められています。
+// edit.blade.php のこちらも patch にしたいところですが、 form タグの method 属性は patch に今のところ対応していないので、このように書いて、これから送信するのは patch 形式だよと明示的に指示してあげる必要があるので注意しておきましょう。
+Route::patch('/posts/{post}/update', [PostController::class, 'update'])
+    ->name('posts.update')
+    ->where('post', '[0-9]+');

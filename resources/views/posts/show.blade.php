@@ -11,6 +11,19 @@
         &laquo; <a href="{{ route('posts.index') }}">Back</a>
     </div>
 
-    <h1>{{ $post->title}}</h1>
-    <p>{{ $post->body }}</p>
+    <h1>
+        {{ $post->title}}
+        <a href="{{ route('posts.edit', $post) }}">[Edit]</a>
+    </h1>
+
+
+
+
+    {{-- <p>{{ $post->body }}</p> --}}
+    {{-- 改行の表示：これだとbrタグが表示されてしまう --}}
+    {{-- <p>{nl2br($post->body)}</p> --}}
+    {{-- !!で文字実態参照への変換を無効→悪意のあるこーその対策必要 --}}
+    {{-- <p>{!! nl2br($post->body) !!}</p> --}}
+    {{-- htmlspecialchars を使えば良いのですが、 Laravel では e() を使って短く書ける --}}
+    <p>{!! nl2br(e($post->body)) !!}</p>
 </x-layout>
