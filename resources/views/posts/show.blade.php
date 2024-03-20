@@ -33,6 +33,14 @@
     {{-- htmlspecialchars を使えば良いのですが、 Laravel では e() を使って短く書ける --}}
     <p>{!! nl2br(e($post->body)) !!}</p>
 
+    <h2>Comments</h2>
+    <ul>
+        @foreach ($post->comments as $comment)
+            <li>
+                {{ $comment->body }}
+            </li>
+        @endforeach
+    </ul>
 
     <script>
         // 厳密なエラーチェック
