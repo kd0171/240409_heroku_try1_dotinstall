@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            // nullも許容したい場合
-            // $table->string('title')->nullable();
-            $table->text('body');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('posts')) {
+            Schema::create('posts', function (Blueprint $table) {
+                $table->id();
+                $table->string('title');
+                // nullも許容したい場合
+                // $table->string('title')->nullable();
+                $table->text('body');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
