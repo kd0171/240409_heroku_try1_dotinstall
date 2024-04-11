@@ -4,6 +4,7 @@
         My BBS
     </x-slot>
 
+    <example-component></example-component>
 
     <h1>
         <span>My BBS</span>
@@ -44,3 +45,10 @@
         <li>Title</li> --}}
     </ul>
 </x-layout>
+{{--
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <div id="app">
+        <example-component></example-component>
+    </div>
+</html> --}}

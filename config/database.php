@@ -42,7 +42,6 @@ return [
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
-        mysql://bf27cf025d2edc:d5badb77@us-cluster-east-01.k8s.cleardb.net/heroku_195571f50d2841d?reconnect=true
 
         'mysql' => [
             'driver' => 'mysql',
